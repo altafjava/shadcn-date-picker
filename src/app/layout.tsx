@@ -8,9 +8,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Shadcn Datetime Picker",
+  title: "Shadcn Date Picker",
   description:
-    "Shadcn Datetime Picker is a simple and easy-to-use datetime picker component for React. It is built with Tailwind CSS and Shadcn UI.",
+    "Shadcn Date Picker is a simple and easy-to-use date picker component for React. It is built with Tailwind CSS and Shadcn UI.",
 };
 
 export default function RootLayout({

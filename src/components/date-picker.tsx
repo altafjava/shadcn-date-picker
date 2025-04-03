@@ -15,8 +15,8 @@ import { Input } from "./ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 const FormSchema = z.object({
-  datetime: z.date({
-    required_error: "Date & time is required!.",
+  date: z.date({
+    required_error: "Date is required!.",
   }),
 });
 
@@ -47,7 +47,7 @@ export function DatePicker() {
   }, [date]);
 
   useEffect(() => {
-    const value = form.getValues("datetime");
+    const value = form.getValues("date");
     if (value) {
       setCurrentMonth(value);
       const formattedDate = format(value, "dd/MM/yyyy");
@@ -61,7 +61,7 @@ export function DatePicker() {
   }, [form, form.getValues]);
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast.success(`Meeting at: ${format(data.datetime, "d MMMM, yyyy")}`);
+    toast.success(`Meeting at: ${format(data.date, "d MMMM, yyyy")}`);
   }
 
   const handlePreviousMonth = () => {
@@ -150,7 +150,7 @@ export function DatePicker() {
         const parsedDate = parse(fullDate, "dd/MM/yyyy", new Date());
         if (isValid(parsedDate)) {
           setDate(parsedDate);
-          form.setValue("datetime", parsedDate);
+          form.setValue("date", parsedDate);
           setInputValue(fullDate);
         } else {
           resetToPlaceholder();
@@ -334,7 +334,7 @@ export function DatePicker() {
             const parsedDate = parse(dateString, "dd/MM/yyyy", new Date());
             if (isValid(parsedDate)) {
               setDate(parsedDate);
-              form.setValue("datetime", parsedDate);
+              form.setValue("date", parsedDate);
             }
           } catch {
           }
@@ -367,7 +367,7 @@ export function DatePicker() {
           <div className="flex w-full gap-4">
             <FormField
               control={form.control}
-              name="datetime"
+              name="date"
               render={({ field }) => (
                 <FormItem className="flex flex-col w-full">
                   <FormLabel>Date</FormLabel>
